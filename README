@@ -1,0 +1,41 @@
+
+	monocle README:
+
+
+  * description:
+   Monocle is a local network host discovery tool.
+   Tested on Linux and FreeBSD 8.
+   It can be used in a passive or an active mode.
+   The passive mode will just listen for ARP request and reply packets.
+   The active mode will send ARP requests to the specified IP address range.
+   The result will be a list of IP and MAC address present on the local network.
+
+   * set target
+    If you don't define any target, all hosts in the network will be scanned.
+    If you want to scan only x.x.x.1 and x.x.x.17 hosts you.
+    have to define it such as ./monocle 1,17.
+    you can define a host range in this way: ./monocle 1-50.
+    it will scan all of the hosts from 1 to 50 (included).
+    for instance: in order to scan x.x.x.2/4/6/8/10-50 hosts
+    # ./monocle 2,4,6,8,10-50
+
+  * arguments:
+   -h, --help                 show usage and exit program.
+   -V, --version              show program version and exit.
+   -d, --debug                set debug mode.
+   -v, --verbose              set verbose mode.
+   -t, --timer                show diff time to send and recv packet.
+   -H, --no-cols-header       not print header for result scan.
+   -i, --device               set network interface.
+   -p, --passiv               not send, just listen and catch packet.
+   -w, --wait-time            time to the program wait arp response (juste with --passiv).
+   -m, --max-pkt              max packet recvied (just with --passiv).
+   -s, --stats                show packet stats.
+   -e, --send-timeout         wait time for sending next packet.
+	                      exemple: 10, wait 10second, m10 wait 10 microsecond.
+			      not with --passiv mode.
+
+  * compiling:
+    $ ./configure
+    $ make
+    $ ./monocle --help
